@@ -20,22 +20,37 @@
 </head>
 <body>
 
+  <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
+    <defs>
+      <filter id="apple-liquid-lens" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.04" numOctaves="2" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+        <feGaussianBlur in="displaced" stdDeviation="0.25" result="blurred" />
+        <feMerge>
+          <feMergeNode in="blurred" />
+        </feMerge>
+      </filter>
+    </defs>
+  </svg>
+
   <header class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#" class="brand-link">
-        <img src="media/logo_small.png" alt="FENZA SMP Logo" class="brand-logo" width="36" height="36">
+        <img src="media/logo_small.png" alt="FENZA SMP Logo" class="brand-logo" width="32" height="32">
         <span class="brand-name">FENZA <span class="brand-sakura">🌸</span></span>
       </a>
 
       <nav class="nav-links" id="nav-menu" aria-label="Main Navigation">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#community" class="nav-link">Community</a>
-        <a href="#about" class="nav-link">About Us</a>
+        <div class="nav-segmented-track">
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#community" class="nav-link">Community</a>
+          <a href="#about" class="nav-link">About Us</a>
+        </div>
         <a href="#join" class="nav-cta-mobile btn btn-primary">Join Us!</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#join" class="nav-cta btn btn-primary">Join Us!</a>
+        <a href="#join" class="nav-cta">Join Us!</a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
