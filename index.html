@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=fixed-scroll-blur-v5">
+  <link rel="stylesheet" href="style.css?v=gpu-optimized-v6">
 </head>
 <body>
 
@@ -50,7 +50,8 @@
   </header>
 
   <div class="site-backdrop" id="site-backdrop" aria-hidden="true">
-    <div class="site-bg-cherry" id="site-bg-cherry"></div>
+    <div class="site-bg-layer site-bg-sharp"></div>
+    <div class="site-bg-layer site-bg-blurred"></div>
     <canvas id="sakura-canvas" class="sakura-canvas"></canvas>
     <div class="site-bg-overlay" id="site-bg-overlay"></div>
   </div>
@@ -367,6 +368,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=gpu-optimized-v6"></script>
 </body>
 </html>

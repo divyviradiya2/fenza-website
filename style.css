@@ -10,7 +10,7 @@
   --bg-base: #0d0f12;
   --bg-surface: #16191b;
   --bg-surface-elevated: #1e2226;
-  --bg-card: rgba(22, 25, 27, 0.78);
+  --bg-card: rgba(22, 25, 27, 0.86);
   --bg-glass: rgba(13, 15, 18, 0.85);
 
   --border-subtle: rgba(255, 255, 255, 0.08);
@@ -401,27 +401,28 @@ button {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
-.site-bg-cherry {
+.site-bg-layer {
   position: absolute;
-  inset: -40px;
+  inset: -30px;
   background-image: url('media/video/bg_poster.jpg');
   background-size: cover;
   background-position: center 40%;
-  filter: blur(var(--scroll-blur, 0px)) brightness(var(--scroll-brightness, 0.48));
-  transform: scale(1.08) translateZ(0);
-  animation: cherryDrift 24s infinite alternate ease-in-out;
-  will-change: filter;
+  transform: translateZ(0);
 }
 
-@keyframes cherryDrift {
-  0% {
-    transform: scale(1.08) translateY(0);
-  }
-  100% {
-    transform: scale(1.14) translateY(-10px);
-  }
+.site-bg-sharp {
+  filter: brightness(0.48);
+  opacity: 1;
+}
+
+.site-bg-blurred {
+  filter: blur(20px) brightness(0.34);
+  opacity: var(--scroll-blur-opacity, 0);
+  will-change: opacity;
+  transform: scale(1.05) translateZ(0);
 }
 
 .sakura-canvas {
@@ -436,10 +437,9 @@ button {
 .site-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 45%, rgba(13, 15, 18, var(--scroll-overlay, 0.28)) 0%, rgba(13, 15, 18, 0.92) 90%);
+  background: radial-gradient(circle at 50% 45%, rgba(13, 15, 18, 0.28) 0%, rgba(13, 15, 18, 0.90) 90%);
   z-index: 2;
   pointer-events: none;
-  will-change: opacity;
 }
 
 main {
@@ -582,8 +582,6 @@ main {
 
 .feature-card {
   background-color: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -658,11 +656,10 @@ main {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--accent-cyan);
-  background: rgba(13, 15, 18, 0.85);
+  background: rgba(13, 15, 18, 0.92);
   border: 1px solid rgba(0, 248, 255, 0.35);
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-  backdrop-filter: blur(6px);
   z-index: 3;
 }
 
@@ -673,8 +670,7 @@ main {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(13, 15, 18, 0.85);
-  backdrop-filter: blur(6px);
+  background: rgba(13, 15, 18, 0.92);
   border: 1px solid rgba(0, 248, 255, 0.35);
   display: flex;
   align-items: center;
@@ -710,8 +706,6 @@ main {
 
 .anti-card {
   background-color: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1117,9 +1111,7 @@ main {
   position: relative;
   z-index: 1;
   border-top: 1px solid var(--border-subtle);
-  background-color: rgba(10, 12, 14, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(10, 12, 14, 0.94);
   padding: 36px 0;
 }
 

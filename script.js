@@ -76,21 +76,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let width = 0;
     let height = 0;
-    let dpr = window.devicePixelRatio || 1;
+    let dpr = 1;
 
     const resize = () => {
-      dpr = window.devicePixelRatio || 1;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.25);
       width = canvas.offsetWidth;
       height = canvas.offsetHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
     };
 
     resize();
 
     const isMobile = window.innerWidth < 600;
-    const petalCount = isMobile ? 24 : 45;
+    const petalCount = isMobile ? 16 : 28;
     const petals = [];
 
     const colors = [
@@ -109,11 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
       reset(init = false) {
         this.x = Math.random() * width;
         this.y = init ? Math.random() * height : -20;
-        this.size = Math.random() * 9 + 7;
-        this.speedY = Math.random() * 1.3 + 0.7;
-        this.speedX = Math.random() * 0.9 - 0.2;
+        this.size = Math.random() * 8 + 6;
+        this.speedY = Math.random() * 1.2 + 0.6;
+        this.speedX = Math.random() * 0.8 - 0.2;
         this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = (Math.random() - 0.5) * 0.025;
+        this.angleSpeed = (Math.random() - 0.5) * 0.02;
         this.flip = Math.random() * Math.PI;
         this.flipSpeed = Math.random() * 0.03 + 0.01;
         this.color = colors[Math.floor(Math.random() * colors.length)];
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       update() {
         this.y += this.speedY;
-        this.x += this.speedX + Math.sin(this.angle) * 0.7;
+        this.x += this.speedX + Math.sin(this.angle) * 0.6;
         this.angle += this.angleSpeed;
         this.flip += this.flipSpeed;
 
@@ -137,9 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.scale(1, Math.cos(this.flip));
 
         ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(this.size / 2, -this.size / 2, this.size, -this.size / 4, this.size, 0);
-        ctx.bezierCurveTo(this.size, this.size / 4, this.size / 2, this.size / 2, 0, 0);
+        ctx.ellipse(0, 0, this.size * 0.45, this.size * 0.85, 0, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
 
@@ -163,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animate();
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
@@ -183,13 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollY = window.scrollY || window.pageYOffset || 0;
       const maxScroll = Math.min(window.innerHeight * 0.85, 600);
       const progress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
-      const blur = (progress * 22).toFixed(1);
-      const brightness = (0.48 - progress * 0.16).toFixed(2);
-      const overlay = (0.28 + progress * 0.45).toFixed(2);
 
-      document.documentElement.style.setProperty('--scroll-blur', `${blur}px`);
-      document.documentElement.style.setProperty('--scroll-brightness', brightness);
-      document.documentElement.style.setProperty('--scroll-overlay', overlay);
+      document.documentElement.style.setProperty('--scroll-blur-opacity', progress.toFixed(3));
       ticking = false;
     };
 
