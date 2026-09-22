@@ -434,7 +434,7 @@ button {
 
 .site-bg-layer {
   position: absolute;
-  inset: -30px;
+  inset: -40px;
   background-image: url('media/video/bg_poster.jpg');
   background-size: cover;
   background-position: center 40%;
@@ -450,7 +450,7 @@ button {
   filter: blur(20px) brightness(0.34);
   opacity: var(--scroll-blur-opacity, 0);
   will-change: opacity;
-  transform: scale(1.05) translateZ(0);
+  transform: translateZ(0);
 }
 
 .sakura-canvas {
