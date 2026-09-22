@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
+  const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link, .nav-cta-mobile');
 
   if (navToggle && navMenu) {
     const toggleMenu = () => {
       const isOpen = navMenu.classList.toggle('is-open');
+      if (navbar) navbar.classList.toggle('menu-open', isOpen);
       navToggle.classList.toggle('is-active', isOpen);
       navToggle.setAttribute('aria-expanded', String(isOpen));
     };
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', (e) => {
-      if (navMenu.classList.contains('is-open') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+      if (navMenu.classList.contains('is-open') && navbar && !navbar.contains(e.target)) {
         toggleMenu();
       }
     });

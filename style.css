@@ -217,18 +217,21 @@ button {
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(calc(100% - 36px), 660px);
-  height: 58px;
-  padding: 0 10px 0 16px;
+  width: min(calc(100% - 32px), 660px);
+  height: 56px;
+  padding: 8px;
   border-radius: 9999px;
-  background: rgba(48, 52, 60, 0.45);
-  backdrop-filter: blur(32px) saturate(180%);
-  -webkit-backdrop-filter: blur(32px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 38%, rgba(20, 24, 34, 0.35) 75%, rgba(12, 16, 24, 0.48) 100%);
+  backdrop-filter: blur(28px) saturate(220%) contrast(108%) brightness(1.12);
+  -webkit-backdrop-filter: blur(28px) saturate(220%) contrast(108%) brightness(1.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top-color: rgba(255, 255, 255, 0.38);
+  border-bottom-color: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42), inset 0 1px 1px 0 rgba(255, 255, 255, 0.42), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.08);
   z-index: 1000;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .nav-container {
@@ -237,12 +240,13 @@ button {
   justify-content: space-between;
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   transition: opacity 0.2s ease;
 }
 
@@ -251,16 +255,16 @@ button {
 }
 
 .brand-logo-gem {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 2px 8px rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
 }
 
@@ -326,7 +330,7 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
+  height: 40px;
   padding: 0 22px;
   font-family: var(--font-heading);
   font-size: 0.88rem;
@@ -352,22 +356,29 @@ button {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 38px;
-  height: 38px;
-  padding: 6px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 2px 8px rgba(0, 0, 0, 0.25);
+  padding: 0;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .nav-toggle .bar {
   display: block;
-  width: 20px;
+  width: 18px;
   height: 2px;
   background-color: var(--text-white);
   border-radius: 2px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
 .nav-toggle.is-active .bar:nth-child(1) {
@@ -1149,7 +1160,7 @@ button {
 
 @media (max-width: 720px) {
   :root {
-    --nav-height: 54px;
+    --nav-height: 56px;
   }
 
   .section {
@@ -1157,35 +1168,58 @@ button {
   }
 
   .navbar {
+    position: fixed;
     top: 14px;
-    width: calc(100% - 24px);
-    height: 54px;
-    padding: 0 10px 0 14px;
-    background: rgba(48, 52, 60, 0.45);
-    backdrop-filter: blur(32px) saturate(180%);
-    -webkit-backdrop-filter: blur(32px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(calc(100% - 24px), 480px);
+    max-width: calc(100% - 24px);
+    height: 56px;
+    padding: 8px;
+    border-radius: 28px;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    transition: border-radius 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background 0.25s ease;
+  }
+
+  .navbar.menu-open,
+  .navbar:has(.nav-links.is-open) {
+    height: auto;
+    border-radius: 28px;
+    padding: 8px 8px 12px 8px;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    min-height: 40px;
     padding: 0;
-    height: 100%;
   }
 
   .brand-link {
+    order: 1;
+    height: 40px;
     gap: 10px;
   }
 
   .brand-logo-gem {
-    width: 36px;
-    height: 36px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    width: 40px;
+    height: 40px;
   }
 
   .brand-name {
     font-size: 1.05rem;
+  }
+
+  .nav-actions {
+    order: 2;
+    height: 40px;
   }
 
   .nav-actions .nav-cta {
@@ -1194,63 +1228,67 @@ button {
 
   .nav-toggle {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    cursor: pointer;
+    width: 40px;
+    height: 40px;
   }
 
   .nav-links {
-    position: fixed;
-    top: 74px;
-    left: 12px;
-    right: 12px;
-    width: calc(100% - 24px);
-    background: rgba(38, 42, 50, 0.9);
-    backdrop-filter: blur(36px) saturate(180%);
-    -webkit-backdrop-filter: blur(36px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
-    flex-direction: column;
-    padding: 12px;
-    gap: 4px;
-    transform: translateY(-8px);
+    order: 3;
+    position: static;
+    width: 100%;
+    max-height: 0;
     opacity: 0;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, visibility 0.2s ease;
-    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    flex-direction: column;
+    padding: 0;
+    margin-top: 0;
+    gap: 6px;
+    transform: none;
+    visibility: visible;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, margin-top 0.25s ease, padding-top 0.25s ease;
   }
 
+  .navbar.menu-open .nav-links,
   .nav-links.is-open {
-    transform: translateY(0);
+    max-height: 320px;
     opacity: 1;
-    visibility: visible;
+    pointer-events: auto;
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .nav-segmented-track {
     flex-direction: column;
     width: 100%;
-    gap: 3px;
+    gap: 4px;
   }
 
   .nav-links .nav-link {
     width: 100%;
     text-align: center;
-    height: 40px;
-    line-height: 40px;
+    height: 42px;
+    line-height: 42px;
     padding: 0 16px;
-    border-radius: 12px;
-    font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.8);
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    background-color: transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
-  .nav-links .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #fff;
+  .nav-links .nav-link:hover,
+  .nav-links .nav-link:active {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
   }
 
   .nav-cta-mobile {
@@ -1258,13 +1296,21 @@ button {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 42px;
-    border-radius: 12px;
+    height: 44px;
+    border-radius: 14px;
     margin-top: 4px;
     border: none;
-    background-color: var(--accent-emerald);
-    color: #031c03;
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
     font-weight: 700;
+    color: #021a02;
+    background: linear-gradient(180deg, #12f512 0%, #00cf00 100%);
+    box-shadow: 0 4px 18px rgba(0, 230, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+
+  .nav-cta-mobile:active {
+    transform: scale(0.98);
   }
 
   .hero {
