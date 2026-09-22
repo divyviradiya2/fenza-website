@@ -10,8 +10,8 @@
   --bg-base: #0d0f12;
   --bg-surface: #16191b;
   --bg-surface-elevated: #1e2226;
-  --bg-card: rgba(22, 25, 27, 0.86);
-  --bg-glass: rgba(13, 15, 18, 0.85);
+  --bg-card: rgba(18, 21, 25, 0.78);
+  --bg-glass: rgba(14, 17, 20, 0.80);
 
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-card: rgba(255, 255, 255, 0.09);
@@ -747,18 +747,21 @@ main {
 
 .feature-card {
   background-color: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  transform: translateZ(0);
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) translateZ(0);
   border-color: var(--border-hover);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
 }
 
 .card-media {
@@ -872,7 +875,7 @@ main {
 }
 
 .compare-col {
-  background: rgba(22, 25, 27, 0.85);
+  background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 32px 28px;
@@ -881,8 +884,9 @@ main {
   gap: 22px;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transform: translateZ(0);
 }
 
 .compare-typical {
@@ -1029,11 +1033,14 @@ main {
 
 .discord-profile-card {
   background-color: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transform: translateZ(0);
 }
 
 .discord-card-banner {
@@ -1172,12 +1179,15 @@ main {
 
 .conversation-perks-card {
   background-color: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 32px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transform: translateZ(0);
 }
 
 .perks-badge {
@@ -1244,12 +1254,22 @@ main {
 
 .staff-card {
   background-color: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 24px;
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  transform: translateZ(0);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-2px) translateZ(0);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
 .staff-avatar-wrap {
@@ -1320,9 +1340,12 @@ main {
 
 .supporter-banner {
   background-color: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 20px 24px;
+  transform: translateZ(0);
 }
 
 .supporter-content {
@@ -1343,13 +1366,14 @@ main {
   max-width: 1040px;
   margin: 0 auto;
   position: relative;
-  background: rgba(20, 23, 26, 0.75);
+  background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 40px 36px 36px 36px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  transform: translateZ(0);
 }
 
 .progress-steps {
@@ -1470,45 +1494,20 @@ main {
 .join-channel-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(88, 101, 242, 0.1);
+  border: 1px solid rgba(88, 101, 242, 0.25);
   border-radius: var(--radius-pill);
   align-self: flex-start;
 }
 
 .join-channel-pill code {
   font-family: var(--font-heading), -apple-system, sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  color: var(--text-white);
+  color: #c5cdff;
   letter-spacing: 0.02em;
-}
-
-.ip-details-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.ip-divider {
-  color: rgba(255, 255, 255, 0.2);
-}
-
-.ip-fallback code {
-  color: var(--text-white);
-  background: rgba(255, 255, 255, 0.08);
-  padding: 2px 7px;
-  border-radius: 4px;
-  font-family: 'Space Grotesk', monospace;
-  font-weight: 600;
-  font-size: 0.88em;
-  letter-spacing: 0.04em;
 }
 
 /* 1-Click Copy IP Widget */
@@ -1516,31 +1515,33 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(13, 15, 18, 0.95);
-  border: 1.5px solid rgba(2, 219, 2, 0.35);
+  background: rgba(14, 16, 19, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
   padding: 8px 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
   -webkit-user-select: none;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .ip-copy-widget:hover {
-  border-color: var(--accent-emerald);
-  background: rgba(18, 22, 26, 0.98);
-  box-shadow: 0 4px 14px rgba(2, 219, 2, 0.25);
+  border-color: rgba(2, 219, 2, 0.45);
+  background: rgba(18, 22, 26, 0.88);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .ip-copy-widget:active {
-  transform: scale(0.985);
+  transform: scale(0.99);
 }
 
 .ip-copy-widget.is-copied {
-  border-color: #07f207;
-  background: rgba(2, 219, 2, 0.12);
+  border-color: rgba(2, 219, 2, 0.6);
+  background: rgba(16, 22, 20, 0.88);
 }
 
 .ip-info {
@@ -1566,26 +1567,74 @@ main {
 .ip-action {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  min-width: 82px;
+  height: 28px;
   font-size: 0.78rem;
   font-family: var(--font-heading);
   font-weight: 700;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px 8px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 10px;
   border-radius: var(--radius-sm);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.ip-copy-widget:hover .ip-action {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.ip-icon-copy,
+.ip-icon-check {
+  flex-shrink: 0;
+}
+
+.ip-icon-check {
+  display: none;
 }
 
 .ip-copy-widget.is-copied .ip-action {
-  background: var(--accent-emerald);
-  color: #051405;
+  background: rgba(2, 219, 2, 0.15);
+  border-color: rgba(2, 219, 2, 0.35);
+  color: var(--accent-emerald);
 }
 
-.ip-subtext {
-  font-size: 0.75rem;
+.ip-copy-widget.is-copied .ip-icon-copy {
+  display: none;
+}
+
+.ip-copy-widget.is-copied .ip-icon-check {
+  display: inline-block;
+  color: var(--accent-emerald);
+}
+
+.ip-details-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  margin-top: 6px;
+}
+
+.ip-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.ip-details-row code {
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: 'Space Grotesk', monospace;
+  font-weight: 600;
+  font-size: 0.88em;
+  letter-spacing: 0.04em;
 }
 
 .join-bottom-cta {

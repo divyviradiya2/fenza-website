@@ -52,18 +52,34 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ipCopyBtn && ipCopyText) {
     let copyTimer = null;
     ipCopyBtn.addEventListener('click', async () => {
+      let copied = false;
       try {
-        await navigator.clipboard.writeText('play.fenza.fun');
-        ipCopyBtn.classList.add('is-copied');
-        ipCopyText.textContent = 'Copied! ✓';
-        if (copyTimer) clearTimeout(copyTimer);
-        copyTimer = setTimeout(() => {
-          ipCopyBtn.classList.remove('is-copied');
-          ipCopyText.textContent = 'Copy IP';
-        }, 2200);
-      } catch {
-        ipCopyText.textContent = 'play.fenza.fun';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText('play.fenza.fun');
+          copied = true;
+        }
+      } catch (_) {
       }
+      if (!copied) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = 'play.fenza.fun';
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        } catch (_) {
+        }
+      }
+      ipCopyBtn.classList.add('is-copied');
+      ipCopyText.textContent = 'Copied';
+      if (copyTimer) clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => {
+        ipCopyBtn.classList.remove('is-copied');
+        ipCopyText.textContent = 'Copy IP';
+      }, 1400);
     });
 
     ipCopyBtn.addEventListener('keydown', (e) => {
