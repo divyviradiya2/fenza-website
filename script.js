@@ -65,4 +65,112 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   fetchDiscordCounts();
+
+  const initSakura = () => {
+    const canvas = document.getElementById('sakura-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = window.devicePixelRatio || 1;
+
+    const resize = () => {
+      dpr = window.devicePixelRatio || 1;
+      width = canvas.offsetWidth;
+      height = canvas.offsetHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+    };
+
+    resize();
+
+    const isMobile = window.innerWidth < 600;
+    const petalCount = isMobile ? 24 : 45;
+    const petals = [];
+
+    const colors = [
+      'rgba(255, 182, 193, 0.85)',
+      'rgba(255, 117, 160, 0.78)',
+      'rgba(244, 114, 182, 0.72)',
+      'rgba(251, 207, 232, 0.9)',
+      'rgba(255, 192, 203, 0.8)'
+    ];
+
+    class Petal {
+      constructor() {
+        this.reset(true);
+      }
+
+      reset(init = false) {
+        this.x = Math.random() * width;
+        this.y = init ? Math.random() * height : -20;
+        this.size = Math.random() * 9 + 7;
+        this.speedY = Math.random() * 1.3 + 0.7;
+        this.speedX = Math.random() * 0.9 - 0.2;
+        this.angle = Math.random() * Math.PI * 2;
+        this.angleSpeed = (Math.random() - 0.5) * 0.025;
+        this.flip = Math.random() * Math.PI;
+        this.flipSpeed = Math.random() * 0.03 + 0.01;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.angle) * 0.7;
+        this.angle += this.angleSpeed;
+        this.flip += this.flipSpeed;
+
+        if (this.y > height + 20 || this.x < -30 || this.x > width + 30) {
+          this.reset(false);
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.scale(1, Math.cos(this.flip));
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(this.size / 2, -this.size / 2, this.size, -this.size / 4, this.size, 0);
+        ctx.bezierCurveTo(this.size, this.size / 4, this.size / 2, this.size / 2, 0, 0);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < petalCount; i++) {
+      petals.push(new Petal());
+    }
+
+    let animationFrameId;
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < petals.length; i++) {
+        petals[i].update();
+        petals[i].draw();
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    window.addEventListener('resize', resize);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else {
+        animate();
+      }
+    });
+  };
+
+  initSakura();
 });
