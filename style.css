@@ -297,15 +297,23 @@ button {
 
 .brand-name {
   font-family: var(--font-pixel);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: var(--text-white);
-  letter-spacing: 0.04em;
-  text-shadow: 1px 1px 0 #000;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9);
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transform: translateY(2px);
 }
 
 .brand-sakura {
-  font-size: 0.95rem;
-  margin-left: 2px;
+  font-size: 1.05rem;
+  margin-left: 5px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 
 .nav-links {
@@ -1309,8 +1317,9 @@ main {
   }
 
   .brand-name {
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     line-height: 1;
+    transform: translateY(2px);
   }
 
   .nav-actions {
