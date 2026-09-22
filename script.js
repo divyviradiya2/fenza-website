@@ -38,12 +38,108 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const mooncycleCard = document.getElementById('mooncycle-card');
-  if (mooncycleCard) {
-    mooncycleCard.addEventListener('click', (e) => {
-      if (e.metaKey || e.ctrlKey) return;
-      e.preventDefault();
-      window.open('https://fenza.fun/mooncycle/', '_blank', 'noopener,noreferrer');
+  const hudSlots = document.querySelectorAll('.hotbar-slot');
+  const hudSpotlight = document.getElementById('hud-spotlight');
+  const hudImg = document.getElementById('hud-img');
+  const hudCoords = document.getElementById('hud-coords');
+  const hudBadge = document.getElementById('hud-badge');
+  const hudStatus = document.getElementById('hud-status');
+  const hudTitle = document.getElementById('hud-title');
+  const hudDesc = document.getElementById('hud-desc');
+  const hudActionRow = document.getElementById('hud-action-row');
+
+  const hudData = [
+    {
+      img: 'media/features/vanilla_smp.png',
+      coords: '[X: 184, Z: -290] • Spawn Village',
+      badge: 'CLASSIC SURVIVAL',
+      status: 'Java & Bedrock Crossplay',
+      title: 'Vanilla Survival Multiplayer',
+      desc: 'Classic Minecraft mechanics with zero invasive game-breaking changes. Pure building, exploration, and community cooperation in a shared world.',
+      actionHtml: ''
+    },
+    {
+      img: 'media/features/no_griefing.jpg',
+      coords: '[X: 520, Z: 810] • Grand Library',
+      badge: 'COREPROTECT LOGS',
+      status: '100% Protected',
+      title: 'Zero Griefing Tolerance',
+      desc: 'Build mega structures anywhere without fear. Every placed or broken block is logged, and staff can roll back any griefing in seconds.',
+      actionHtml: ''
+    },
+    {
+      img: 'media/features/player_driven.jpg',
+      coords: '[X: -340, Z: 620] • River Town',
+      badge: 'COMMUNITY FIRST',
+      status: 'Player Economies & Roads',
+      title: 'Player-Driven World',
+      desc: 'Organized organically by players. Towns, roads, Nether ice highways, and community trading hubs emerge naturally without admin intervention.',
+      actionHtml: ''
+    },
+    {
+      img: 'media/features/moon_cycle.gif',
+      coords: '[X: 0, Z: 0] • World Center',
+      badge: 'CUSTOM PLUGIN',
+      status: 'Dynamic Lunar Nights',
+      title: 'MoonCycle Plugin',
+      desc: 'Minecraft\'s lunar cycle is tied to survival mechanics. Mobs grow stronger as the moon waxes, culminating in a dangerous Full Moon night with 2x drops.',
+      actionHtml: '<a href="https://fenza.fun/mooncycle/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Explore MoonCycle App ➔</a>'
+    }
+  ];
+
+  if (hudSlots.length > 0 && hudSpotlight) {
+    hudSlots.forEach((slot) => {
+      slot.addEventListener('click', () => {
+        const slotIdx = parseInt(slot.getAttribute('data-slot'), 10);
+        const data = hudData[slotIdx];
+        if (!data) return;
+
+        hudSlots.forEach((s) => {
+          s.classList.remove('is-active');
+          s.setAttribute('aria-selected', 'false');
+        });
+        slot.classList.add('is-active');
+        slot.setAttribute('aria-selected', 'true');
+
+        hudSpotlight.style.opacity = '0.4';
+        setTimeout(() => {
+          if (hudImg) hudImg.src = data.img;
+          if (hudCoords) hudCoords.textContent = data.coords;
+          if (hudBadge) hudBadge.textContent = data.badge;
+          if (hudStatus) hudStatus.textContent = data.status;
+          if (hudTitle) hudTitle.textContent = data.title;
+          if (hudDesc) hudDesc.textContent = data.desc;
+          if (hudActionRow) hudActionRow.innerHTML = data.actionHtml;
+          hudSpotlight.style.opacity = '1';
+        }, 120);
+      });
+    });
+  }
+
+  const ipCopyBtn = document.getElementById('ip-copy-btn');
+  const ipCopyText = document.getElementById('ip-copy-text');
+  if (ipCopyBtn && ipCopyText) {
+    let copyTimer = null;
+    ipCopyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('fenza.fun');
+        ipCopyBtn.classList.add('is-copied');
+        ipCopyText.textContent = 'Copied! ✓';
+        if (copyTimer) clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => {
+          ipCopyBtn.classList.remove('is-copied');
+          ipCopyText.textContent = 'Copy IP';
+        }, 2200);
+      } catch {
+        ipCopyText.textContent = 'fenza.fun';
+      }
+    });
+
+    ipCopyBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        ipCopyBtn.click();
+      }
     });
   }
 

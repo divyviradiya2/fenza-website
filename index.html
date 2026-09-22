@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=fenza-smp-v20">
+  <link rel="stylesheet" href="style.css?v=concept-a-v21">
 </head>
 <body>
 
@@ -89,63 +89,53 @@
     <section class="section features-section" id="features">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">CORE EXPERIENCE</span>
-          <h2 class="section-title">WHAT WE HAVE</h2>
-          <p class="section-subtitle">Everything designed to make your survival journey enjoyable, creative, and memorable.</p>
+          <span class="section-tag">CODEX • CORE EXPERIENCE</span>
+          <h2 class="section-title">THE SURVIVAL CODEX</h2>
+          <p class="section-subtitle">Select a hotbar slot below to inspect mechanics, world coordinates, and features.</p>
         </div>
 
-        <div class="features-grid">
-          <article class="feature-card">
-            <div class="card-media">
-              <img src="media/features/vanilla_smp.png" alt="Vanilla SMP" class="card-media-img" loading="lazy">
+        <div class="hud-stage">
+          <div class="hud-spotlight" id="hud-spotlight">
+            <div class="hud-media">
+              <img src="media/features/vanilla_smp.png" alt="Feature Preview" id="hud-img" class="hud-img">
+              <div class="hud-coord-pill" id="hud-coords">[X: 184, Z: -290] • Spawn Village</div>
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Vanilla SMP</h3>
-              <p class="card-desc">Classic Minecraft survival, with no major gameplay changes.</p>
-            </div>
-          </article>
-
-          <article class="feature-card">
-            <div class="card-media">
-              <img src="media/features/no_griefing.jpg" alt="No Griefing" class="card-media-img" loading="lazy">
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">No Griefing</h3>
-              <p class="card-desc">Build freely without worrying about players destroying your creations.</p>
-            </div>
-          </article>
-
-          <article class="feature-card">
-            <div class="card-media">
-              <img src="media/features/player_driven.jpg" alt="Player-Driven World" class="card-media-img" loading="lazy">
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Player-Driven World</h3>
-              <p class="card-desc">Players shape the server through their builds, stories, and communities.</p>
-            </div>
-          </article>
-
-          <a href="https://fenza.fun/mooncycle/" target="_blank" rel="noopener noreferrer" class="feature-card feature-card-interactive" id="mooncycle-card">
-            <div class="card-media">
-              <img src="media/features/moon_cycle.gif" alt="MoonCycle Plugin" class="card-media-img" loading="lazy">
-              <span class="card-arrow-circle" aria-label="Open MoonCycle Plugin Details">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7M7 7h10v10"/>
-                </svg>
-              </span>
-              <span class="lunar-badge">CUSTOM PLUGIN</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">MoonCycle Plugin</h3>
-              <p class="card-desc">The world changes with the moon, bringing tougher nights and forced PvP during the Full Moon.</p>
-              <div class="card-link-prompt">
-                <span>Explore MoonCycle App</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+            <div class="hud-details">
+              <div class="hud-tag-row">
+                <span class="hud-badge" id="hud-badge">CLASSIC SURVIVAL</span>
+                <span class="hud-status" id="hud-status">Java &amp; Bedrock Crossplay</span>
               </div>
+              <h3 class="hud-title" id="hud-title">Vanilla Survival Multiplayer</h3>
+              <p class="hud-desc" id="hud-desc">Classic Minecraft mechanics with zero invasive game-breaking changes. Pure building, exploration, and community cooperation in a shared world.</p>
+              <div class="hud-action-row" id="hud-action-row"></div>
             </div>
-          </a>
+          </div>
+
+          <div class="hud-hotbar-wrap">
+            <div class="hud-hotbar-label">INVENTORY HOTBAR • SELECT FEATURE</div>
+            <div class="hud-hotbar" role="tablist" aria-label="Feature Hotbar">
+              <button class="hotbar-slot is-active" data-slot="0" role="tab" aria-selected="true" aria-label="Vanilla Survival">
+                <span class="slot-num">1</span>
+                <span class="slot-icon">🌾</span>
+                <span class="slot-name">Vanilla</span>
+              </button>
+              <button class="hotbar-slot" data-slot="1" role="tab" aria-selected="false" aria-label="No Griefing">
+                <span class="slot-num">2</span>
+                <span class="slot-icon">🛡️</span>
+                <span class="slot-name">Protection</span>
+              </button>
+              <button class="hotbar-slot" data-slot="2" role="tab" aria-selected="false" aria-label="Player Towns">
+                <span class="slot-num">3</span>
+                <span class="slot-icon">🏘️</span>
+                <span class="slot-name">Towns</span>
+              </button>
+              <button class="hotbar-slot" data-slot="3" role="tab" aria-selected="false" aria-label="MoonCycle">
+                <span class="slot-num">4</span>
+                <span class="slot-icon">🌙</span>
+                <span class="slot-name">MoonCycle</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -155,34 +145,95 @@
         <div class="section-header">
           <span class="section-tag section-tag-muted">SERVER PHILOSOPHY</span>
           <h2 class="section-title">WHAT WE DON'T HAVE</h2>
-          <p class="section-subtitle">We intentionally keep things clean, fair, and relaxed for authentic survival.</p>
+          <p class="section-subtitle">How FENZA compares against modern pay-to-win servers.</p>
         </div>
 
-        <div class="anti-grid">
-          <article class="anti-card">
-            <div class="card-media">
-              <img src="media/features/no_land_claim.jpg" alt="No Land Claim" class="card-media-img" loading="lazy">
+        <div class="compare-matrix">
+          <div class="compare-col compare-typical">
+            <div class="compare-header">
+              <div class="compare-icon-wrap">❌</div>
+              <div>
+                <h3 class="compare-col-title">Typical Public Servers</h3>
+                <span class="compare-col-subtitle">Gimmicky, paywalled, and bloated</span>
+              </div>
             </div>
-            <div class="card-body">
-              <h3 class="card-title">No Land Claim</h3>
-              <p class="card-desc">No claim system — protect your builds through the server's community rules.</p>
-            </div>
-          </article>
+            <ul class="compare-list">
+              <li class="compare-item">
+                <span class="compare-mark is-bad">✕</span>
+                <div class="compare-item-body">
+                  <strong>Ugly Golden Claim Boundaries</strong>
+                  <p>Unnatural glowing borders cutting through landscapes and ruining immersion.</p>
+                </div>
+              </li>
+              <li class="compare-item">
+                <span class="compare-mark is-bad">✕</span>
+                <div class="compare-item-body">
+                  <strong>$50+ "Titan" Pay-to-Win Ranks</strong>
+                  <p>Donators flying with /fly, full netherite kits, and unfair combat perks.</p>
+                </div>
+              </li>
+              <li class="compare-item">
+                <span class="compare-mark is-bad">✕</span>
+                <div class="compare-item-body">
+                  <strong>Toxic PvP Tryhards &amp; Griefing</strong>
+                  <p>Spawn camping, crystal meta, and constant fear of losing your progress.</p>
+                </div>
+              </li>
+              <li class="compare-item">
+                <span class="compare-mark is-bad">✕</span>
+                <div class="compare-item-body">
+                  <strong>Cluttered Hologram Hubs</strong>
+                  <p>Dozens of confusing NPC warps, crate keys, and constant chat spam.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-          <article class="anti-card">
-            <div class="card-media">
-              <img src="media/features/no_pvp_tryhard.jpg" alt="No PvP Try hard" class="card-media-img" loading="lazy">
+          <div class="compare-col compare-fenza">
+            <div class="compare-highlight-glow"></div>
+            <div class="compare-header">
+              <div class="compare-icon-wrap compare-icon-fenza">🌸</div>
+              <div>
+                <h3 class="compare-col-title">The FENZA Way</h3>
+                <span class="compare-col-subtitle">Chill, pure vanilla, and community-trusted</span>
+              </div>
             </div>
-            <div class="card-body">
-              <h3 class="card-title">No PvP Try hard</h3>
-              <p class="card-desc">No tryhard PvP meta — play at your own pace and enjoy the SMP.</p>
-            </div>
-          </article>
+            <ul class="compare-list">
+              <li class="compare-item">
+                <span class="compare-mark is-good">✓</span>
+                <div class="compare-item-body">
+                  <strong>Untouched Natural Landscapes</strong>
+                  <p>Build freely anywhere. CoreProtect logs every block and staff roll back grief instantly.</p>
+                </div>
+              </li>
+              <li class="compare-item">
+                <span class="compare-mark is-good">✓</span>
+                <div class="compare-item-body">
+                  <strong>100% Fair Survival — Zero P2W</strong>
+                  <p>Donators receive chat vanity and emojis only. Survival gameplay is untouched.</p>
+                </div>
+              </li>
+              <li class="compare-item">
+                <span class="compare-mark is-good">✓</span>
+                <div class="compare-item-body">
+                  <strong>Builders, Redstone &amp; Explorers</strong>
+                  <p>A welcoming, mature atmosphere where people collaborate on mega-projects.</p>
+                </div>
+              </li>
+              <li class="compare-item">
+                <span class="compare-mark is-good">✓</span>
+                <div class="compare-item-body">
+                  <strong>Direct World Spawn</strong>
+                  <p>No bloated lobby maze. Connect directly into the pristine survival world.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="red-alert-banner">
-          <span class="alert-icon" aria-hidden="true">⚠</span>
-          <span class="alert-text">WE ARE NOT LOOKING FOR PVP TRY HARDS</span>
+        <div class="compare-footer-notice">
+          <span class="notice-icon" aria-hidden="true">⚠</span>
+          <span class="notice-text"><strong>Strict Policy:</strong> We do not cater to PvP tryhards, griefers, or pay-to-win mechanics.</span>
         </div>
       </div>
     </section>
@@ -322,22 +373,69 @@
     <section class="section join-section" id="join">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">GET STARTED</span>
+          <span class="section-tag">ONBOARDING • QUESTLINE</span>
           <h2 class="section-title">HOW TO JOIN</h2>
-          <p class="section-subtitle">Two simple steps to enter the server and start building.</p>
+          <p class="section-subtitle">Complete the 3-stage onboarding quest to join the server and start building.</p>
         </div>
 
-        <div class="join-steps-grid">
-          <div class="step-card">
-            <div class="step-badge">STEP 01</div>
-            <h3 class="step-title">Join Our discord server</h3>
-            <p class="step-desc">Enter our Discord community to read the server rules and introduce yourself.</p>
+        <div class="questline-flow">
+          <div class="quest-node">
+            <div class="quest-node-top">
+              <span class="quest-step-badge">STAGE 01</span>
+              <span class="quest-icon">💬</span>
+            </div>
+            <h3 class="quest-title">Join Discord</h3>
+            <p class="quest-desc">Step into our community, read the simple server guidelines, and say hi in general chat.</p>
+            <a href="https://discord.gg/ZeBFhWhctB" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-sm quest-btn">
+              <span>Open Discord</span>
+            </a>
           </div>
 
-          <div class="step-card">
-            <div class="step-badge">STEP 02</div>
-            <h3 class="step-title">Fill Application and get Whitelisted</h3>
-            <p class="step-desc">Submit your Minecraft username in the whitelist channel to get approved by staff.</p>
+          <div class="quest-connector" aria-hidden="true">
+            <span class="connector-line"></span>
+            <span class="connector-arrow">➔</span>
+          </div>
+
+          <div class="quest-node">
+            <div class="quest-node-top">
+              <span class="quest-step-badge">STAGE 02</span>
+              <span class="quest-icon">📝</span>
+            </div>
+            <h3 class="quest-title">Post Gamertag</h3>
+            <p class="quest-desc">Drop your Java or Bedrock username in the <code>#whitelist</code> channel. Staff approvals are quick.</p>
+            <div class="quest-status-chip">
+              <span class="status-pulse-dot"></span>
+              <span>Fast Staff Approvals</span>
+            </div>
+          </div>
+
+          <div class="quest-connector" aria-hidden="true">
+            <span class="connector-line"></span>
+            <span class="connector-arrow">➔</span>
+          </div>
+
+          <div class="quest-node quest-node-launch">
+            <div class="quest-node-top">
+              <span class="quest-step-badge quest-badge-emerald">STAGE 03</span>
+              <span class="quest-icon">⚔️</span>
+            </div>
+            <h3 class="quest-title">Connect &amp; Play</h3>
+            <p class="quest-desc">Add the server to your multiplayer list. Java 1.21+ &amp; Bedrock supported.</p>
+            
+            <div class="ip-copy-widget" id="ip-copy-btn" role="button" tabindex="0" title="Click to copy server IP">
+              <div class="ip-info">
+                <span class="ip-label">SERVER ADDRESS</span>
+                <span class="ip-address">fenza.fun</span>
+              </div>
+              <div class="ip-action">
+                <span class="ip-copy-text" id="ip-copy-text">Copy IP</span>
+                <svg class="ip-copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="ip-subtext">Java: 25565 • Bedrock: 19132</div>
           </div>
         </div>
 
@@ -367,6 +465,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=fenza-smp-v20"></script>
+  <script src="script.js?v=concept-a-v21"></script>
 </body>
 </html>
