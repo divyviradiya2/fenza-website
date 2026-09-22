@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let copyTimer = null;
     ipCopyBtn.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText('fenza.fun');
+        await navigator.clipboard.writeText('play.fenza.fun');
         ipCopyBtn.classList.add('is-copied');
         ipCopyText.textContent = 'Copied! ✓';
         if (copyTimer) clearTimeout(copyTimer);
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ipCopyText.textContent = 'Copy IP';
         }, 2200);
       } catch {
-        ipCopyText.textContent = 'fenza.fun';
+        ipCopyText.textContent = 'play.fenza.fun';
       }
     });
 

@@ -1266,87 +1266,116 @@ main {
   color: var(--text-body);
 }
 
-/* Streamlined How to Join Flow */
-.join-card {
+/* Connected Line Progress Guide */
+.join-progress-card {
   max-width: 1040px;
   margin: 0 auto;
-  background: rgba(22, 25, 27, 0.7);
+  position: relative;
+  background: rgba(20, 23, 26, 0.75);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
+  padding: 40px 36px 36px 36px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-.join-steps {
+.progress-steps {
   display: grid;
-  grid-template-columns: 1fr 1px 1fr 1px 1.15fr;
-  align-items: stretch;
+  grid-template-columns: 1fr 1fr 1.15fr;
+  gap: 36px;
+  position: relative;
 }
 
-.join-divider {
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  width: 1px;
-}
-
-.join-step {
-  padding: 32px 28px;
+.progress-step {
+  position: relative;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.25s ease;
 }
 
-.join-step:hover {
-  background-color: rgba(255, 255, 255, 0.02);
-}
-
-.join-step-header {
+.progress-node-wrap {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.join-step-num {
-  font-family: var(--font-pixel);
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.5);
+/* Connecting track line between nodes on desktop */
+.progress-step:not(:last-child) .progress-node-wrap::after {
+  content: '';
+  position: absolute;
+  left: 48px;
+  right: -36px;
+  height: 3px;
+  background: linear-gradient(90deg, #5865f2 0%, rgba(255, 255, 255, 0.25) 100%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.progress-step[data-step="2"] .progress-node-wrap::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0%, var(--accent-emerald) 100%);
+}
+
+.progress-node {
+  position: relative;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  font-weight: 700;
+  background: #14171a;
+  border: 2px solid var(--border-card);
+  box-shadow: 0 0 0 6px #14171a;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.join-num-emerald {
+.progress-node-discord {
+  color: #8ea1ff;
+  border-color: #5865f2;
+  background: #14171a;
+  box-shadow: 0 0 16px rgba(88, 101, 242, 0.35);
+}
+
+.progress-node-apply {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.45);
+  background: #14171a;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.progress-node-emerald {
   color: var(--accent-emerald);
-  background: rgba(2, 219, 2, 0.1);
-  border-color: rgba(2, 219, 2, 0.35);
+  border-color: var(--accent-emerald);
+  background: #14171a;
+  box-shadow: 0 0 18px rgba(2, 219, 2, 0.4);
 }
 
-.join-step-badge {
+.progress-step-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.progress-tag {
   font-family: var(--font-heading);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--text-muted);
-  background: var(--bg-surface-elevated);
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
+  display: inline-block;
+  margin-bottom: 6px;
 }
 
-.join-badge-emerald {
+.progress-tag-emerald {
   color: var(--accent-emerald);
-  background: rgba(2, 219, 2, 0.1);
-  border-color: rgba(2, 219, 2, 0.3);
 }
 
-.join-step-title {
+.progress-step-title {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
@@ -1354,11 +1383,11 @@ main {
   margin-bottom: 8px;
 }
 
-.join-step-desc {
+.progress-step-desc {
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   flex: 1;
 }
 
@@ -1372,20 +1401,42 @@ main {
   gap: 8px;
   padding: 6px 14px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-pill);
   align-self: flex-start;
 }
 
 .join-channel-pill code {
-  font-family: var(--font-pixel);
+  font-family: var(--font-heading), -apple-system, sans-serif;
   font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-white);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
-.join-step-highlight {
-  background: rgba(2, 219, 2, 0.02);
+.ip-details-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.ip-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.ip-fallback code {
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: 'Space Grotesk', monospace;
+  font-weight: 600;
+  font-size: 0.88em;
+  letter-spacing: 0.04em;
 }
 
 /* 1-Click Copy IP Widget */
@@ -1529,18 +1580,56 @@ main {
     gap: 20px;
   }
 
-  .join-steps {
-    grid-template-columns: 1fr;
+  .join-progress-card {
+    padding: 28px 20px;
   }
 
-  .join-divider {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  .progress-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
   }
 
-  .join-step {
-    padding: 24px 20px;
+  /* Vertical connecting track between nodes on mobile */
+  .progress-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 52px;
+    bottom: -18px;
+    width: 3px;
+    background: linear-gradient(180deg, #5865f2 0%, rgba(255, 255, 255, 0.35) 100%);
+    border-radius: 2px;
+    z-index: 1;
+  }
+
+  .progress-step[data-step="2"]::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, var(--accent-emerald) 100%);
+  }
+
+  .progress-step {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .progress-step:not(:last-child) .progress-node-wrap::after {
+    display: none;
+  }
+
+  .progress-node-wrap {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .progress-step-body {
+    flex: 1;
+    min-width: 0;
   }
 }
 
