@@ -1,15 +1,7 @@
 @font-face {
   font-family: 'Minecraft';
-  src: url('assets/fonts/Minecraft.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Minecraft';
-  src: url('assets/fonts/Minecraft-Bold.otf') format('opentype');
-  font-weight: 700;
+  src: url('media/fonts/Minecraft.ttf') format('truetype');
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
@@ -18,8 +10,8 @@
   --bg-base: #0d0f12;
   --bg-surface: #16191b;
   --bg-surface-elevated: #1e2226;
-  --bg-card: rgba(22, 25, 27, 0.72);
-  --bg-glass: rgba(13, 15, 18, 0.82);
+  --bg-card: rgba(22, 25, 27, 0.78);
+  --bg-glass: rgba(13, 15, 18, 0.85);
 
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-card: rgba(255, 255, 255, 0.09);
@@ -78,7 +70,7 @@ a {
   text-decoration: none;
 }
 
-img, svg {
+img, svg, video {
   display: block;
   max-width: 100%;
 }
@@ -249,8 +241,9 @@ button {
 }
 
 .brand-logo {
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--border-subtle);
+  object-fit: cover;
 }
 
 .brand-name {
@@ -342,13 +335,22 @@ button {
 .hero-backdrop {
   position: absolute;
   inset: 0;
-  background-image: url('assets/hero-bg.jpg');
-  background-size: cover;
-  background-position: center 38%;
-  filter: brightness(0.25) blur(14px);
-  transform: scale(1.04);
+  overflow: hidden;
   z-index: 1;
   pointer-events: none;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.15);
+  object-fit: cover;
+  filter: blur(14px) brightness(0.25);
 }
 
 .hero-overlay {
@@ -403,6 +405,7 @@ button {
   border-radius: var(--radius-xl);
   border: 2px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  object-fit: cover;
 }
 
 .hero-title {
@@ -478,15 +481,16 @@ button {
 
 .hero-scroll-indicator {
   margin-top: 48px;
-  color: var(--text-muted);
+  opacity: 0.6;
   animation: bounceDown 2s infinite ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .hero-scroll-indicator:hover {
-  color: var(--accent-emerald);
+  opacity: 1;
 }
 
 @keyframes bounceDown {
@@ -503,8 +507,8 @@ button {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
 }
 
 .feature-card {
@@ -513,28 +517,42 @@ button {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-hover);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
-.card-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
+.card-media {
+  position: relative;
+  width: 100%;
+  height: 160px;
   background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.card-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover .card-media-img {
+  transform: scale(1.06);
+}
+
+.card-body {
+  padding: 24px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-emerald);
-  margin-bottom: 20px;
+  flex-direction: column;
+  flex: 1;
 }
 
 .card-title {
@@ -553,56 +571,54 @@ button {
 
 .feature-card-interactive {
   border-color: rgba(0, 248, 255, 0.35);
-  background: linear-gradient(180deg, rgba(22, 25, 27, 0.85) 0%, rgba(13, 25, 32, 0.85) 100%);
   cursor: pointer;
   position: relative;
 }
 
 .feature-card-interactive:hover {
   border-color: var(--accent-cyan);
-  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 248, 255, 0.18);
 }
 
-.card-top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-
-.lunar-badge {
+.card-media .lunar-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
   font-size: 0.7rem;
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--accent-cyan);
-  background: rgba(0, 248, 255, 0.12);
-  border: 1px solid rgba(0, 248, 255, 0.28);
+  background: rgba(13, 15, 18, 0.85);
+  border: 1px solid rgba(0, 248, 255, 0.35);
   padding: 4px 10px;
   border-radius: var(--radius-pill);
+  backdrop-filter: blur(6px);
+  z-index: 3;
 }
 
-.card-arrow-circle {
+.card-media .card-arrow-circle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(0, 248, 255, 0.12);
-  border: 1px solid rgba(0, 248, 255, 0.3);
+  background: rgba(13, 15, 18, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 248, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-cyan);
   transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 3;
 }
 
 .feature-card-interactive:hover .card-arrow-circle {
-  transform: scale(1.1);
+  transform: scale(1.12);
   background: var(--accent-cyan);
   color: #051418;
-}
-
-.card-icon-lunar {
-  color: var(--accent-cyan);
 }
 
 .card-link-prompt {
@@ -619,7 +635,7 @@ button {
 .anti-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 22px;
   margin-bottom: 28px;
 }
 
@@ -629,20 +645,17 @@ button {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.anti-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
-  background-color: rgba(255, 71, 87, 0.08);
-  border: 1px solid rgba(255, 71, 87, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-alert);
-  margin-bottom: 20px;
+.anti-card .card-media {
+  height: 160px;
+}
+
+.anti-card .card-body {
+  padding: 24px;
 }
 
 .red-alert-banner {
@@ -723,9 +736,10 @@ button {
 .discord-avatar-img {
   width: 84px;
   height: 84px;
-  border-radius: 50%;
+  border-radius: 20px;
   border: 4px solid var(--bg-surface);
   background-color: var(--bg-surface);
+  object-fit: cover;
 }
 
 .discord-status-dot {
@@ -912,17 +926,11 @@ button {
   height: 72px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
-  image-rendering: pixelated;
+  object-fit: cover;
 }
 
-.staff-avatar-placeholder {
-  border-radius: var(--radius-md);
-  background-color: var(--bg-surface-elevated);
-  border: 1px dashed rgba(255, 71, 87, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-alert);
+.staff-avatar-dimmed {
+  opacity: 0.85;
 }
 
 .staff-info {

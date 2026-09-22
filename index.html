@@ -8,11 +8,11 @@
   
   <meta property="og:title" content="FENZA SMP 🌸 | Vanilla Minecraft Community">
   <meta property="og:description" content="Whitelist-only Vanilla SMP for Java & Bedrock. Player-driven world, zero pay-to-win, mature community, and custom MoonCycle plugin.">
-  <meta property="og:image" content="https://fenza.fun/assets/server-banner.png">
+  <meta property="og:image" content="https://fenza.fun/media/discord_banner.gif">
   <meta property="og:url" content="https://fenza.fun/">
   <meta property="og:type" content="website">
 
-  <link rel="icon" type="image/png" href="assets/server-icon.png">
+  <link rel="icon" type="image/png" href="media/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
   <header class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#" class="brand-link">
-        <img src="assets/server-icon.png" alt="FENZA SMP Logo" class="brand-logo" width="36" height="36">
+        <img src="media/logo_small.png" alt="FENZA SMP Logo" class="brand-logo" width="36" height="36">
         <span class="brand-name">FENZA <span class="brand-sakura">🌸</span></span>
       </a>
 
@@ -47,7 +47,11 @@
 
   <main>
     <section class="hero" id="hero">
-      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="hero-backdrop" aria-hidden="true">
+        <video class="hero-video" autoplay loop muted playsinline poster="media/video/bg_poster.jpg">
+          <source src="media/video/bg_video.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-content">
@@ -57,7 +61,7 @@
         </div>
 
         <div class="hero-emblem-wrap">
-          <img src="assets/server-icon.png" alt="FENZA Server Emblem" class="hero-emblem" width="104" height="104">
+          <img src="media/logo_animated.gif" alt="FENZA Server Logo" class="hero-emblem" width="112" height="112">
         </div>
 
         <h1 class="hero-title">FENZA</h1>
@@ -79,9 +83,7 @@
         </a>
 
         <a href="#features" class="hero-scroll-indicator" aria-label="Scroll to Features">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 5v14M19 12l-7 7-7-7"/>
-          </svg>
+          <img src="media/downarrow.png" alt="Scroll down" width="22" height="22">
         </a>
       </div>
     </section>
@@ -96,61 +98,54 @@
 
         <div class="features-grid">
           <article class="feature-card">
-            <div class="card-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <path d="M12 18v-6M9 15h6"/>
-              </svg>
+            <div class="card-media">
+              <img src="media/features/vanilla_smp.png" alt="Vanilla SMP" class="card-media-img" loading="lazy">
             </div>
-            <h3 class="card-title">Vanilla SMP</h3>
-            <p class="card-desc">Classic Minecraft survival, with no major gameplay changes.</p>
+            <div class="card-body">
+              <h3 class="card-title">Vanilla SMP</h3>
+              <p class="card-desc">Classic Minecraft survival, with no major gameplay changes.</p>
+            </div>
           </article>
 
           <article class="feature-card">
-            <div class="card-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="m9 12 2 2 4-4"/>
-              </svg>
+            <div class="card-media">
+              <img src="media/features/no_griefing.jpg" alt="No Griefing" class="card-media-img" loading="lazy">
             </div>
-            <h3 class="card-title">No Griefing</h3>
-            <p class="card-desc">Build freely without worrying about players destroying your creations.</p>
+            <div class="card-body">
+              <h3 class="card-title">No Griefing</h3>
+              <p class="card-desc">Build freely without worrying about players destroying your creations.</p>
+            </div>
           </article>
 
           <article class="feature-card">
-            <div class="card-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                <path d="M2 12h20"/>
-              </svg>
+            <div class="card-media">
+              <img src="media/features/player_driven.jpg" alt="Player-Driven World" class="card-media-img" loading="lazy">
             </div>
-            <h3 class="card-title">Player-Driven World</h3>
-            <p class="card-desc">Players shape the server through their builds, stories, and communities.</p>
+            <div class="card-body">
+              <h3 class="card-title">Player-Driven World</h3>
+              <p class="card-desc">Players shape the server through their builds, stories, and communities.</p>
+            </div>
           </article>
 
           <a href="https://fenza.fun/mooncycle/" target="_blank" rel="noopener noreferrer" class="feature-card feature-card-interactive" id="mooncycle-card">
-            <div class="card-top-bar">
-              <span class="lunar-badge">CUSTOM PLUGIN</span>
+            <div class="card-media">
+              <img src="media/features/moon_cycle.gif" alt="MoonCycle Plugin" class="card-media-img" loading="lazy">
               <span class="card-arrow-circle" aria-label="Open MoonCycle Plugin Details">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M7 17L17 7M7 7h10v10"/>
                 </svg>
               </span>
+              <span class="lunar-badge">CUSTOM PLUGIN</span>
             </div>
-            <div class="card-icon-box card-icon-lunar">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-              </svg>
-            </div>
-            <h3 class="card-title">MoonCycle Plugin</h3>
-            <p class="card-desc">The world changes with the moon, bringing tougher nights and forced PvP during the Full Moon.</p>
-            <div class="card-link-prompt">
-              <span>Explore MoonCycle App</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+            <div class="card-body">
+              <h3 class="card-title">MoonCycle Plugin</h3>
+              <p class="card-desc">The world changes with the moon, bringing tougher nights and forced PvP during the Full Moon.</p>
+              <div class="card-link-prompt">
+                <span>Explore MoonCycle App</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
             </div>
           </a>
         </div>
@@ -167,26 +162,23 @@
 
         <div class="anti-grid">
           <article class="anti-card">
-            <div class="anti-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="18" height="18" x="3" y="3" rx="2"/>
-                <path d="m3 3 18 18"/>
-              </svg>
+            <div class="card-media">
+              <img src="media/features/no_land_claim.jpg" alt="No Land Claim" class="card-media-img" loading="lazy">
             </div>
-            <h3 class="card-title">No Land Claim</h3>
-            <p class="card-desc">No claim system — protect your builds through the server's community rules.</p>
+            <div class="card-body">
+              <h3 class="card-title">No Land Claim</h3>
+              <p class="card-desc">No claim system — protect your builds through the server's community rules.</p>
+            </div>
           </article>
 
           <article class="anti-card">
-            <div class="anti-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.5 17.5 3 6V3h3l11.5 11.5"/>
-                <path d="m13 19 6 2 2-6-4.5-4.5"/>
-                <path d="m3 3 18 18"/>
-              </svg>
+            <div class="card-media">
+              <img src="media/features/no_pvp_tryhard.jpg" alt="No PvP Try hard" class="card-media-img" loading="lazy">
             </div>
-            <h3 class="card-title">No PvP Try hard</h3>
-            <p class="card-desc">No tryhard PvP meta — play at your own pace and enjoy the SMP.</p>
+            <div class="card-body">
+              <h3 class="card-title">No PvP Try hard</h3>
+              <p class="card-desc">No tryhard PvP meta — play at your own pace and enjoy the SMP.</p>
+            </div>
           </article>
         </div>
 
@@ -208,13 +200,13 @@
         <div class="discord-hub-grid">
           <div class="discord-profile-card">
             <div class="discord-card-banner">
-              <img src="assets/server-banner.png" alt="FENZA Discord Banner" class="discord-banner-img">
+              <img src="media/discord_banner.gif" alt="FENZA Discord Banner" class="discord-banner-img">
             </div>
 
             <div class="discord-card-body">
               <div class="discord-header-row">
                 <div class="discord-avatar-wrap">
-                  <img src="assets/server-icon.png" alt="FENZA Avatar" class="discord-avatar-img">
+                  <img src="media/logo_small.png" alt="FENZA Avatar" class="discord-avatar-img">
                   <span class="discord-status-dot" title="Online"></span>
                 </div>
                 <div class="discord-meta-right">
@@ -296,7 +288,7 @@
         <div class="staff-grid">
           <article class="staff-card">
             <div class="staff-avatar-wrap">
-              <img src="assets/tag-avatar.png" alt="TAG Owner Avatar" class="staff-avatar">
+              <img src="media/owner_avatar.gif" alt="TAG Owner Avatar" class="staff-avatar">
             </div>
             <div class="staff-info">
               <span class="role-badge role-owner">[Owner]</span>
@@ -308,13 +300,8 @@
           </article>
 
           <article class="staff-card staff-card-vacancy">
-            <div class="staff-avatar-wrap staff-avatar-placeholder">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <line x1="19" x2="19" y1="8" y2="14"/>
-                <line x1="22" x2="16" y1="11" y2="11"/>
-              </svg>
+            <div class="staff-avatar-wrap">
+              <img src="media/placeholder.png" alt="Admin Vacancy Avatar" class="staff-avatar staff-avatar-dimmed">
             </div>
             <div class="staff-info">
               <span class="role-badge role-admin">[Admin]</span>
