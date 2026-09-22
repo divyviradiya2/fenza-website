@@ -393,39 +393,31 @@ button {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.hero {
-  position: relative;
-  min-height: clamp(520px, 100vh, 840px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--nav-height) + 56px) 24px 56px 24px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.hero-backdrop {
-  position: absolute;
+.site-backdrop {
+  position: fixed;
   inset: 0;
-  overflow: hidden;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
-.hero-bg-cherry {
+.site-bg-cherry {
   position: absolute;
-  inset: -20px;
+  inset: -40px;
   background-image: url('media/video/bg_poster.jpg');
   background-size: cover;
   background-position: center 40%;
-  filter: brightness(0.48);
-  transform: scale(1.06);
+  filter: blur(var(--scroll-blur, 0px)) brightness(var(--scroll-brightness, 0.48));
+  transform: scale(1.08) translateZ(0);
   animation: cherryDrift 24s infinite alternate ease-in-out;
+  will-change: filter;
 }
 
 @keyframes cherryDrift {
   0% {
-    transform: scale(1.06) translateY(0);
+    transform: scale(1.08) translateY(0);
   }
   100% {
     transform: scale(1.14) translateY(-10px);
@@ -437,16 +429,32 @@ button {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
 }
 
-.hero-overlay {
+.site-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 45%, rgba(13, 15, 18, 0.28) 0%, rgba(13, 15, 18, 0.88) 90%);
+  background: radial-gradient(circle at 50% 45%, rgba(13, 15, 18, var(--scroll-overlay, 0.28)) 0%, rgba(13, 15, 18, 0.92) 90%);
   z-index: 2;
   pointer-events: none;
+  will-change: opacity;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  position: relative;
+  min-height: clamp(520px, 100vh, 840px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--nav-height) + 56px) 24px 56px 24px;
+  text-align: center;
 }
 
 .hero-content {
@@ -1106,8 +1114,12 @@ button {
 }
 
 .site-footer {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid var(--border-subtle);
-  background-color: #0a0c0e;
+  background-color: rgba(10, 12, 14, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 36px 0;
 }
 

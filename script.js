@@ -175,4 +175,33 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   initSakura();
+
+  const initScrollBlur = () => {
+    let ticking = false;
+
+    const updateScrollBlur = () => {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const maxScroll = Math.min(window.innerHeight * 0.85, 600);
+      const progress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+      const blur = (progress * 22).toFixed(1);
+      const brightness = (0.48 - progress * 0.16).toFixed(2);
+      const overlay = (0.28 + progress * 0.45).toFixed(2);
+
+      document.documentElement.style.setProperty('--scroll-blur', `${blur}px`);
+      document.documentElement.style.setProperty('--scroll-brightness', brightness);
+      document.documentElement.style.setProperty('--scroll-overlay', overlay);
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollBlur);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateScrollBlur();
+  };
+
+  initScrollBlur();
 });
