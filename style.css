@@ -479,26 +479,14 @@ main {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
-  height: 100dvh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--nav-height) + clamp(10px, 2vh, 24px)) 24px clamp(16px, 3.2vh, 32px) 24px;
+  padding: calc(var(--nav-height) + clamp(20px, 4vh, 48px)) 24px clamp(24px, 4vh, 48px) 24px;
   text-align: center;
   box-sizing: border-box;
-  overflow: hidden;
-}
-
-@media (max-height: 540px) {
-  .hero {
-    height: auto;
-    min-height: 100dvh;
-    overflow: visible;
-    padding-top: calc(var(--nav-height) + 20px);
-    padding-bottom: 28px;
-  }
 }
 
 .hero-content {
@@ -509,19 +497,18 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto 0;
 }
 
 .hero-emblem-wrap {
-  margin-bottom: clamp(10px, 2vh, 20px);
+  margin-bottom: clamp(12px, 2.5vw, 20px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .hero-emblem {
-  width: clamp(70px, 10.5vh, 104px);
-  height: clamp(70px, 10.5vh, 104px);
+  width: clamp(74px, 14vw, 96px);
+  height: clamp(74px, 14vw, 96px);
   border-radius: var(--radius-xl);
   border: 2px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
@@ -530,17 +517,17 @@ main {
 
 .hero-title {
   font-family: var(--font-pixel);
-  font-size: clamp(2.4rem, 6.2vh, 4.25rem);
+  font-size: clamp(2.6rem, 7vw, 4.25rem);
   font-weight: 400;
   color: var(--text-white);
   letter-spacing: 0.06em;
   line-height: 1.1;
-  margin-bottom: clamp(6px, 1.4vh, 14px);
+  margin-bottom: clamp(8px, 1.5vw, 14px);
   text-shadow: 3px 3px 0 #000;
 }
 
 .hero-desc {
-  font-size: clamp(0.92rem, 1.75vh, 1.125rem);
+  font-size: clamp(0.92rem, 1.8vw, 1.125rem);
   color: var(--text-muted);
   max-width: min(580px, 92vw);
   margin-bottom: clamp(16px, 2.8vh, 28px);
@@ -614,7 +601,7 @@ main {
 
 .pill-top {
   font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2.1vh, 1.25rem);
+  font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.15;
   color: #ffffff;
@@ -623,7 +610,7 @@ main {
 
 .pill-bottom {
   font-family: var(--font-body);
-  font-size: clamp(0.78rem, 1.35vh, 0.85rem);
+  font-size: 0.82rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.82);
   line-height: 1.2;
@@ -631,11 +618,7 @@ main {
 }
 
 .hero-scroll-indicator {
-  position: absolute;
-  bottom: clamp(14px, 2.8vh, 28px);
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 0;
+  margin-top: clamp(28px, 5vh, 48px);
   opacity: 0.65;
   animation: bounceDown 2s infinite ease-in-out;
   display: flex;
@@ -647,16 +630,6 @@ main {
 
 .hero-scroll-indicator:hover {
   opacity: 1;
-}
-
-@media (max-height: 540px) {
-  .hero-scroll-indicator {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    margin-top: 20px;
-  }
 }
 
 @keyframes bounceDown {
@@ -1464,7 +1437,7 @@ main {
   }
 
   .hero {
-    padding: calc(var(--nav-height) + clamp(8px, 1.8vh, 16px)) 16px clamp(14px, 2.5vh, 24px) 16px;
+    padding: calc(var(--nav-height) + 28px) 16px 40px 16px;
   }
 
   .hero-pill-btn {
