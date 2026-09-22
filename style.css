@@ -423,9 +423,11 @@ button {
 
 .site-backdrop {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  height: 100lvh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -434,22 +436,11 @@ button {
 
 .site-bg-layer {
   position: absolute;
-  inset: -40px;
+  inset: 0;
   background-image: url('media/video/bg_poster.jpg');
   background-size: cover;
   background-position: center 40%;
-  transform: translateZ(0);
-}
-
-.site-bg-sharp {
   filter: brightness(0.48);
-  opacity: 1;
-}
-
-.site-bg-blurred {
-  filter: blur(20px) brightness(0.34);
-  opacity: var(--scroll-blur-opacity, 0);
-  will-change: opacity;
   transform: translateZ(0);
 }
 
