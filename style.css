@@ -1300,8 +1300,10 @@ main {
     max-height: 380px;
     border-radius: 28px;
     padding: 7px 10px 14px 10px;
-    background: rgba(26, 30, 38, 0.94);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+    background: rgba(36, 40, 50, 0.45);
+    backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
+    -webkit-backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
   }
 
   .nav-container {
