@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=concept-a-v21">
+  <link rel="stylesheet" href="style.css?v=compare-matrix-v22">
 </head>
 <body>
 
@@ -89,53 +89,63 @@
     <section class="section features-section" id="features">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">CODEX • CORE EXPERIENCE</span>
-          <h2 class="section-title">THE SURVIVAL CODEX</h2>
-          <p class="section-subtitle">Select a hotbar slot below to inspect mechanics, world coordinates, and features.</p>
+          <span class="section-tag">CORE EXPERIENCE</span>
+          <h2 class="section-title">WHAT WE HAVE</h2>
+          <p class="section-subtitle">Everything designed to make your survival journey enjoyable, creative, and memorable.</p>
         </div>
 
-        <div class="hud-stage">
-          <div class="hud-spotlight" id="hud-spotlight">
-            <div class="hud-media">
-              <img src="media/features/vanilla_smp.png" alt="Feature Preview" id="hud-img" class="hud-img">
-              <div class="hud-coord-pill" id="hud-coords">[X: 184, Z: -290] • Spawn Village</div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="card-media">
+              <img src="media/features/vanilla_smp.png" alt="Vanilla SMP" class="card-media-img" loading="lazy">
             </div>
-            <div class="hud-details">
-              <div class="hud-tag-row">
-                <span class="hud-badge" id="hud-badge">CLASSIC SURVIVAL</span>
-                <span class="hud-status" id="hud-status">Java &amp; Bedrock Crossplay</span>
-              </div>
-              <h3 class="hud-title" id="hud-title">Vanilla Survival Multiplayer</h3>
-              <p class="hud-desc" id="hud-desc">Classic Minecraft mechanics with zero invasive game-breaking changes. Pure building, exploration, and community cooperation in a shared world.</p>
-              <div class="hud-action-row" id="hud-action-row"></div>
+            <div class="card-body">
+              <h3 class="card-title">Vanilla SMP</h3>
+              <p class="card-desc">Classic Minecraft survival, with no major gameplay changes.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="hud-hotbar-wrap">
-            <div class="hud-hotbar-label">INVENTORY HOTBAR • SELECT FEATURE</div>
-            <div class="hud-hotbar" role="tablist" aria-label="Feature Hotbar">
-              <button class="hotbar-slot is-active" data-slot="0" role="tab" aria-selected="true" aria-label="Vanilla Survival">
-                <span class="slot-num">1</span>
-                <span class="slot-icon">🌾</span>
-                <span class="slot-name">Vanilla</span>
-              </button>
-              <button class="hotbar-slot" data-slot="1" role="tab" aria-selected="false" aria-label="No Griefing">
-                <span class="slot-num">2</span>
-                <span class="slot-icon">🛡️</span>
-                <span class="slot-name">Protection</span>
-              </button>
-              <button class="hotbar-slot" data-slot="2" role="tab" aria-selected="false" aria-label="Player Towns">
-                <span class="slot-num">3</span>
-                <span class="slot-icon">🏘️</span>
-                <span class="slot-name">Towns</span>
-              </button>
-              <button class="hotbar-slot" data-slot="3" role="tab" aria-selected="false" aria-label="MoonCycle">
-                <span class="slot-num">4</span>
-                <span class="slot-icon">🌙</span>
-                <span class="slot-name">MoonCycle</span>
-              </button>
+          <article class="feature-card">
+            <div class="card-media">
+              <img src="media/features/no_griefing.jpg" alt="No Griefing" class="card-media-img" loading="lazy">
             </div>
-          </div>
+            <div class="card-body">
+              <h3 class="card-title">No Griefing</h3>
+              <p class="card-desc">Build freely without worrying about players destroying your creations.</p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-media">
+              <img src="media/features/player_driven.jpg" alt="Player-Driven World" class="card-media-img" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Player-Driven World</h3>
+              <p class="card-desc">Players shape the server through their builds, stories, and communities.</p>
+            </div>
+          </article>
+
+          <a href="https://fenza.fun/mooncycle/" target="_blank" rel="noopener noreferrer" class="feature-card feature-card-interactive" id="mooncycle-card">
+            <div class="card-media">
+              <img src="media/features/moon_cycle.gif" alt="MoonCycle Plugin" class="card-media-img" loading="lazy">
+              <span class="card-arrow-circle" aria-label="Open MoonCycle Plugin Details">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>
+              </span>
+              <span class="lunar-badge">CUSTOM PLUGIN</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">MoonCycle Plugin</h3>
+              <p class="card-desc">The world changes with the moon, bringing tougher nights and forced PvP during the Full Moon.</p>
+              <div class="card-link-prompt">
+                <span>Explore MoonCycle App</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -465,6 +475,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=concept-a-v21"></script>
+  <script src="script.js?v=compare-matrix-v22"></script>
 </body>
 </html>
