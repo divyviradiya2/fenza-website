@@ -214,21 +214,32 @@ button {
 
 .navbar {
   position: fixed;
-  top: 16px;
+  top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(calc(100% - 32px), 640px);
-  height: 50px;
-  padding: 0 8px 0 14px;
+  width: min(calc(100% - 36px), 660px);
+  height: 58px;
+  padding: 0 10px 0 16px;
   border-radius: 9999px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(0, 0, 0, 0.18) 100%);
-  backdrop-filter: blur(28px) saturate(190%) contrast(105%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(105%);
-  border: none;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(12, 16, 22, 0.28) 100%);
+  backdrop-filter: blur(30px) saturate(200%) brightness(1.05);
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.28);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   z-index: 1000;
   display: flex;
   align-items: center;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.0) 65%);
+  pointer-events: none;
 }
 
 .nav-container {
@@ -242,7 +253,7 @@ button {
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   transition: opacity 0.2s ease;
 }
 
@@ -251,15 +262,25 @@ button {
 }
 
 .brand-logo-gem {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   flex-shrink: 0;
+  position: relative;
+}
+
+.brand-logo-gem::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 60%);
+  pointer-events: none;
 }
 
 .brand-logo {
@@ -267,18 +288,19 @@ button {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+  border: none;
 }
 
 .brand-name {
   font-family: var(--font-pixel);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--text-white);
   letter-spacing: 0.04em;
   text-shadow: 1px 1px 0 #000;
 }
 
 .brand-sakura {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-left: 2px;
 }
 
@@ -295,10 +317,10 @@ button {
 
 .nav-link {
   font-family: var(--font-heading);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
-  padding: 8px 16px;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 8px 18px;
   border-radius: 9999px;
   transition: color 0.15s ease, background-color 0.15s ease;
   white-space: nowrap;
@@ -306,7 +328,7 @@ button {
 
 .nav-link:hover {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-cta-mobile {
@@ -323,16 +345,16 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
-  padding: 0 20px;
+  height: 42px;
+  padding: 0 22px;
   font-family: var(--font-heading);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 700;
   border-radius: 9999px;
   background-color: var(--accent-emerald);
   color: #031c03;
   border: none;
-  box-shadow: 0 2px 10px rgba(2, 219, 2, 0.35);
+  box-shadow: 0 3px 12px rgba(2, 219, 2, 0.35);
   transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
   white-space: nowrap;
 }
@@ -1146,7 +1168,7 @@ button {
 
 @media (max-width: 720px) {
   :root {
-    --nav-height: 50px;
+    --nav-height: 54px;
   }
 
   .section {
@@ -1154,15 +1176,17 @@ button {
   }
 
   .navbar {
-    top: 12px;
+    top: 14px;
     width: calc(100% - 24px);
-    height: 48px;
-    padding: 0 8px 0 12px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(0, 0, 0, 0.2) 100%);
-    backdrop-filter: blur(28px) saturate(190%) contrast(105%);
-    -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(105%);
-    border: none;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    height: 54px;
+    padding: 0 10px 0 14px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(12, 16, 22, 0.32) 100%);
+    backdrop-filter: blur(30px) saturate(200%) brightness(1.05);
+    -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top-color: rgba(255, 255, 255, 0.28);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .nav-container {
@@ -1171,16 +1195,16 @@ button {
   }
 
   .brand-link {
-    gap: 8px;
+    gap: 9px;
   }
 
   .brand-logo-gem {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 
   .brand-name {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
   }
 
   .nav-actions .nav-cta {
@@ -1189,22 +1213,25 @@ button {
 
   .nav-toggle {
     display: flex;
+    width: 42px;
+    height: 42px;
   }
 
   .nav-links {
     position: fixed;
-    top: 66px;
+    top: 74px;
     left: 12px;
     right: 12px;
     width: calc(100% - 24px);
-    background: rgba(12, 16, 22, 0.85);
-    backdrop-filter: blur(32px) saturate(190%);
-    -webkit-backdrop-filter: blur(32px) saturate(190%);
-    border: none;
-    border-radius: 18px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+    background: rgba(12, 16, 22, 0.86);
+    backdrop-filter: blur(36px) saturate(200%);
+    -webkit-backdrop-filter: blur(36px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top-color: rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     flex-direction: column;
-    padding: 10px;
+    padding: 12px;
     gap: 4px;
     transform: translateY(-8px);
     opacity: 0;
