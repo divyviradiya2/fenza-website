@@ -38,7 +38,7 @@
   --radius-xl: 18px;
   --radius-pill: 9999px;
 
-  --nav-height: 72px;
+  --nav-height: 60px;
 }
 
 *, *::before, *::after {
@@ -213,15 +213,20 @@ button {
 
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 940px;
   height: var(--nav-height);
-  background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(20, 24, 28, 0.65) 45%, rgba(13, 16, 20, 0.78) 100%);
+  backdrop-filter: blur(28px) saturate(190%) contrast(105%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .nav-container {
@@ -229,9 +234,8 @@ button {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 24px;
+  width: 100%;
+  padding: 0 12px 0 18px;
 }
 
 .brand-link {
@@ -262,19 +266,22 @@ button {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 8px;
 }
 
 .nav-link {
   font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--text-muted);
-  transition: color 0.15s ease;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .nav-link:hover {
   color: var(--text-white);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-cta-mobile {
@@ -284,7 +291,12 @@ button {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+}
+
+.nav-actions .btn-primary {
+  padding: 8px 20px;
+  font-size: 0.9rem;
 }
 
 .nav-toggle {
@@ -292,17 +304,17 @@ button {
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   padding: 8px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .nav-toggle .bar {
   display: block;
-  width: 22px;
+  width: 20px;
   height: 2px;
   background-color: var(--text-white);
   border-radius: 2px;
@@ -327,7 +339,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--nav-height) + 32px) 24px 56px 24px;
+  padding: calc(var(--nav-height) + 56px) 24px 56px 24px;
   overflow: hidden;
   text-align: center;
 }
@@ -1088,11 +1100,29 @@ button {
 
 @media (max-width: 600px) {
   :root {
-    --nav-height: 64px;
+    --nav-height: 52px;
   }
 
   .section {
     padding: 64px 0;
+  }
+
+  .navbar {
+    top: 12px;
+    width: calc(100% - 24px);
+  }
+
+  .nav-container {
+    padding: 0 8px 0 14px;
+  }
+
+  .brand-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
   }
 
   .nav-actions .nav-cta {
@@ -1105,30 +1135,41 @@ button {
 
   .nav-links {
     position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    width: 100%;
-    background-color: rgba(13, 15, 18, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-subtle);
+    top: 70px;
+    left: 12px;
+    right: 12px;
+    width: calc(100% - 24px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(20, 24, 28, 0.88) 50%, rgba(13, 16, 20, 0.94) 100%);
+    backdrop-filter: blur(28px) saturate(190%) contrast(105%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(105%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.28);
     flex-direction: column;
-    padding: 24px;
-    gap: 20px;
-    transform: translateY(-120%);
-    transition: transform 0.25s ease-in-out;
+    padding: 18px;
+    gap: 8px;
+    transform: translateY(-16px);
+    opacity: 0;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease;
     visibility: hidden;
   }
 
   .nav-links.is-open {
     transform: translateY(0);
+    opacity: 1;
     visibility: visible;
+  }
+
+  .nav-links .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
   }
 
   .nav-cta-mobile {
     display: inline-flex;
     width: 100%;
-    margin-top: 8px;
+    margin-top: 6px;
   }
 
   .hero-pill-btn {
