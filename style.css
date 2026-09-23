@@ -10,11 +10,14 @@
   --bg-base: #0d0f12;
   --bg-surface: #16191b;
   --bg-surface-elevated: #1e2226;
-  --bg-card: rgba(16, 20, 24, 0.62);
+  --bg-card: rgba(18, 22, 26, 0.78);
+  --bg-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.005) 100%);
   --bg-glass: rgba(14, 17, 20, 0.75);
 
+  --card-blur: 8px;
+  --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.09);
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card: rgba(255, 255, 255, 0.10);
+  --border-card: rgba(255, 255, 255, 0.09);
   --border-hover: rgba(2, 219, 2, 0.50);
 
   --accent-emerald: #02db02;
@@ -250,8 +253,8 @@ button {
   padding: 7px;
   border-radius: var(--radius-pill);
   background: rgba(36, 40, 50, 0.4);
-  backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
-  -webkit-backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
+  backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
+  -webkit-backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
   z-index: 1000;
@@ -614,8 +617,8 @@ main {
   border-radius: var(--radius-pill);
   padding: clamp(10px, 1.5vh, 13px) clamp(24px, 3.2vw, 32px);
   color: #ffffff;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
   transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
   text-decoration: none;
@@ -766,15 +769,16 @@ main {
 
 .feature-card {
   background-color: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-image: var(--bg-card-gradient);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   z-index: 1;
 }
@@ -896,7 +900,8 @@ main {
 }
 
 .compare-col {
-  background: var(--bg-card);
+  background-color: var(--bg-card);
+  background-image: var(--bg-card-gradient);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 32px 28px;
@@ -905,9 +910,10 @@ main {
   gap: 22px;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
+  box-shadow: var(--card-shadow);
+  z-index: 1;
 }
 
 .compare-typical {
@@ -1073,14 +1079,15 @@ main {
 
 .discord-profile-card {
   background-color: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-image: var(--bg-card-gradient);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: var(--card-shadow);
   position: relative;
   z-index: 1;
 }
@@ -1221,15 +1228,16 @@ main {
 
 .conversation-perks-card {
   background-color: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-image: var(--bg-card-gradient);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 32px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: var(--card-shadow);
   position: relative;
   z-index: 1;
 }
@@ -1317,15 +1325,16 @@ main {
 
 .staff-card {
   background-color: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-image: var(--bg-card-gradient);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 24px;
   display: flex;
   align-items: flex-start;
   gap: 20px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: var(--card-shadow);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   z-index: 1;
@@ -1405,12 +1414,13 @@ main {
 
 .supporter-banner {
   background-color: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-image: var(--bg-card-gradient);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
   padding: 20px 24px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: var(--card-shadow);
   position: relative;
   z-index: 1;
 }
@@ -1450,13 +1460,14 @@ main {
   max-width: 1040px;
   margin: 0 auto;
   position: relative;
-  background: var(--bg-card);
+  background-color: var(--bg-card);
+  background-image: var(--bg-card-gradient);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
   padding: 40px 36px 36px 36px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(var(--card-blur));
+  -webkit-backdrop-filter: blur(var(--card-blur));
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.09);
   z-index: 1;
 }
 
@@ -1599,13 +1610,11 @@ main {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(14, 18, 22, 0.72);
+  background: rgba(12, 16, 20, 0.88);
   border: 1px solid rgba(2, 219, 2, 0.35);
   border-radius: var(--radius-md);
   padding: 12px 16px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .whitelist-status-icon {
@@ -1775,6 +1784,7 @@ main {
 @media (max-width: 720px) {
   :root {
     --nav-height: 56px;
+    --card-blur: 5px;
   }
 
   .section {
@@ -1794,8 +1804,8 @@ main {
     padding: 7px;
     border-radius: 28px;
     background: rgba(36, 40, 50, 0.45);
-    backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
-    -webkit-backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
+    backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
+    -webkit-backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
     border: 1px solid rgba(255, 255, 255, 0.10);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
     flex-direction: column;
@@ -1814,8 +1824,8 @@ main {
     border-radius: 28px;
     padding: 7px 10px 14px 10px;
     background: rgba(36, 40, 50, 0.45);
-    backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
-    -webkit-backdrop-filter: blur(16px) saturate(190%) brightness(1.06);
+    backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
+    -webkit-backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
   }
 
