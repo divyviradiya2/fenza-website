@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=matte-blur-v26">
+  <link rel="stylesheet" href="style.css?v=matte-blur-v27">
 </head>
 <body>
 
@@ -34,13 +34,12 @@
           <a href="#features" class="nav-link">Features</a>
           <a href="#community" class="nav-link">Community</a>
           <a href="#about" class="nav-link">About Us</a>
-          <a href="#join" class="nav-link">How to Join</a>
         </div>
-        <a href="#join" class="nav-cta-mobile btn btn-primary">Join Us!</a>
+        <a href="#join" class="nav-cta-mobile btn btn-primary">How to Join</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#join" class="nav-cta">Join Us!</a>
+        <a href="#join" class="nav-cta">How to Join</a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -91,7 +90,7 @@
             </span>
             <span class="pill-text">
               <span class="pill-top">How to Join</span>
-              <span class="pill-bottom">3-step guide & IP</span>
+              <span class="pill-bottom">3-step whitelist guide</span>
             </span>
           </a>
         </div>
@@ -453,30 +452,26 @@
               </div>
               <div class="progress-step-body">
                 <span class="progress-tag progress-tag-emerald">STEP 03</span>
-                <h3 class="progress-step-title">Connect &amp; Play</h3>
-                <p class="progress-step-desc">Add the server to multiplayer. Java &amp; Bedrock supported on version 26.1.2 main (all versions work).</p>
+                <h3 class="progress-step-title">Get Whitelisted &amp; Connect</h3>
+                <p class="progress-step-desc">Once your application is reviewed and accepted, staff will whitelist you and you will receive the server IP directly on Discord.</p>
 
-                <div class="ip-copy-widget" id="ip-copy-btn" role="button" tabindex="0" title="Click to copy server IP">
-                  <div class="ip-info">
-                    <span class="ip-label">JAVA &amp; BEDROCK IP</span>
-                    <span class="ip-address">play.fenza.fun</span>
-                  </div>
-                  <div class="ip-action">
-                    <span class="ip-copy-text" id="ip-copy-text">Copy IP</span>
-                    <svg class="ip-icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <div class="whitelist-status-pill">
+                  <span class="whitelist-status-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
-                    <svg class="ip-icon-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                  </span>
+                  <div class="whitelist-status-text">
+                    <span class="status-heading">IP Provided on Discord</span>
+                    <span class="status-note">Shared upon whitelist application approval</span>
                   </div>
                 </div>
 
-                <div class="ip-details-row">
-                  <span>Port: default (19132)</span>
+                <div class="join-info-meta">
+                  <span>Java &amp; Bedrock supported</span>
                   <span class="ip-divider">•</span>
-                  <span>Fallback: <code>92.4.89.104</code></span>
+                  <span>Version 26.1.2 main</span>
                 </div>
               </div>
             </div>
